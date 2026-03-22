@@ -39,8 +39,13 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _bootstrap() async {
-    await _ttsService.init();
-    _speechReady = await _speech.initialize();
+    try {
+      await _ttsService.init();
+      _speechReady = await _speech.initialize();
+    } catch (_) {
+      _speechReady = false;
+    }
+    if (!mounted) return;
     setState(() {
       _messages.add(
         ChatEntry(
@@ -131,6 +136,7 @@ class _ChatScreenState extends State<ChatScreen> {
     await _historyService.addEntry(assistantEntry);
     _scrollToBottom();
 
+    if (!mounted) return;
     if (_speakReply) {
       await _ttsService.speak(reply);
     }

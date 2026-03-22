@@ -8,17 +8,27 @@ class HistoryService {
   static const String _storageKey = 'chat_history_entries';
 
   Future<List<ChatEntry>> loadEntries() async {
-    final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getString(_storageKey);
-    if (raw == null || raw.isEmpty) {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(_storageKey);
+      if (raw == null || raw.isEmpty) {
+        return [];
+      }
+
+      final decoded = jsonDecode(raw) as List<dynamic>;
+      final entries = <ChatEntry>[];
+      for (final item in decoded) {
+        try {
+          entries.add(ChatEntry.fromJson(item as Map<String, dynamic>));
+        } catch (_) {
+          // skip individual corrupted entries
+        }
+      }
+      entries.sort((a, b) => b.timestamp.compareTo(a.timestamp));
+      return entries;
+    } catch (_) {
       return [];
     }
-
-    final decoded = jsonDecode(raw) as List<dynamic>;
-    return decoded
-        .map((item) => ChatEntry.fromJson(item as Map<String, dynamic>))
-        .toList()
-      ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
   }
 
   Future<void> addEntry(ChatEntry entry) async {
