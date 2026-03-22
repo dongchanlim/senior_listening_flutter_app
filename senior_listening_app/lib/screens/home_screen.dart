@@ -18,23 +18,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 16),
+              const Spacer(flex: 3),
               Text(
-                '오늘도 수고하셨습니다',
+                '오늘도 수고하셨습니다 🌿',
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 8),
-              Text(
-                '천천히, 따뜻하게, 끝까지 들어드릴게요.',
-                style: Theme.of(context).textTheme.bodyLarge,
-                textAlign: TextAlign.center,
-              ),
-              const Spacer(),
+              const Spacer(flex: 4),
               LargeActionButton(
                 label: '이야기 시작하기',
                 icon: Icons.mic_rounded,
@@ -42,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                 backgroundColor: AppTheme.primary,
                 height: 88,
               ),
-              const SizedBox(height: 18),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
@@ -54,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                       height: 70,
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 14),
                   Expanded(
                     child: LargeActionButton(
                       label: '마음 쉬기',
@@ -66,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const Spacer(),
+              const Spacer(flex: 1),
             ],
           ),
         ),
