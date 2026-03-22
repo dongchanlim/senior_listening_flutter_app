@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widget_previews.dart';
 import 'package:intl/intl.dart';
 
 import '../models/chat_entry.dart';
 import '../services/history_service.dart';
 import '../theme/app_theme.dart';
+
+Widget historyPreviewWrapper(Widget child) =>
+    MaterialApp(theme: AppTheme.build(), home: child);
+
+@Preview(name: '기록 화면', wrapper: historyPreviewWrapper)
+Widget previewHistoryScreen() => const HistoryScreen();
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -97,7 +104,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 final entry = entries[index];
                 final isAssistant = entry.role == 'assistant';
                 return Card(
-                  color: isAssistant ? Colors.white : const Color(0xFFFFF1E4),
+                  color: isAssistant ? const Color(0xFFE8F3E8) : const Color(0xFFFFEDD8),
                   child: ListTile(
                     contentPadding: const EdgeInsets.all(18),
                     leading: CircleAvatar(

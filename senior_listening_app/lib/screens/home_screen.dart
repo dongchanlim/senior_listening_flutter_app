@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widget_previews.dart';
 
 import '../theme/app_theme.dart';
 import '../widgets/large_action_button.dart';
+
+Widget homePreviewWrapper(Widget child) =>
+    MaterialApp(theme: AppTheme.build(), home: child);
+
+@Preview(name: '홈 화면', wrapper: homePreviewWrapper)
+Widget previewHomeScreen() => const HomeScreen();
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

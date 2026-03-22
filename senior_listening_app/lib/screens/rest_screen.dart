@@ -1,8 +1,15 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widget_previews.dart';
 
 import '../theme/app_theme.dart';
+
+Widget restPreviewWrapper(Widget child) =>
+    MaterialApp(theme: AppTheme.build(), home: child);
+
+@Preview(name: '마음 쉬기 화면', wrapper: restPreviewWrapper)
+Widget previewRestScreen() => const RestScreen();
 
 class RestScreen extends StatefulWidget {
   const RestScreen({super.key});

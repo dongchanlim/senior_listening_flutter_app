@@ -13,7 +13,6 @@ class AppTheme {
       scaffoldBackgroundColor: background,
       colorScheme: ColorScheme.fromSeed(
         seedColor: primary,
-        background: background,
         primary: primary,
         secondary: secondary,
         surface: card,

@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widget_previews.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
@@ -9,6 +11,17 @@ import '../services/history_service.dart';
 import '../services/openai_service.dart';
 import '../services/tts_service.dart';
 import '../theme/app_theme.dart';
+
+Widget chatPreviewWrapper(Widget child) =>
+    MaterialApp(theme: AppTheme.build(), home: child);
+
+@Preview(name: '채팅 화면', wrapper: chatPreviewWrapper)
+WidgetBuilder previewChatScreen() => (context) => FutureBuilder<void>(
+      future: initializeDateFormatting('ko', null),
+      builder: (context, snapshot) => snapshot.connectionState == ConnectionState.done
+          ? const ChatScreen()
+          : const SizedBox.shrink(),
+    );
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -192,7 +205,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 itemCount: _messages.length + (_isLoading ? 1 : 0),
                 itemBuilder: (context, index) {
                   if (_isLoading && index == _messages.length) {
-                    return _TypingCard(textStyle: bodyText);
+                    return const _TypingCard();
                   }
 
                   final message = _messages[index];
@@ -293,9 +306,7 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class _TypingCard extends StatelessWidget {
-  const _TypingCard({required this.textStyle});
-
-  final TextStyle? textStyle;
+  const _TypingCard();
 
   @override
   Widget build(BuildContext context) {
