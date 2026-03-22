@@ -131,7 +131,9 @@ class _ChatScreenState extends State<ChatScreen> {
     _scrollToBottom();
 
     await Future.delayed(const Duration(seconds: 3));
-    final reply = await _openAIService.generateEmpatheticReply(text);
+    // 현재 사용자 메시지(_messages 마지막)는 제외하고 이전 대화 히스토리 전달
+    final history = _messages.sublist(0, _messages.length - 1);
+    final reply = await _openAIService.generateEmpatheticReply(text, history);
 
     if (!mounted) return;
 
