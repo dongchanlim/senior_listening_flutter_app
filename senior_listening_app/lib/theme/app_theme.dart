@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color background = Color(0xFFF7F3E9);
-  static const Color primary = Color(0xFFF4A261);
-  static const Color secondary = Color(0xFFA3B18A);
-  static const Color text = Color(0xFF333333);
-  static const Color card = Color(0xFFFFFBF5);
+  static const Color background = Color(0xFFEDE8D7);    // Warm parchment cream
+  static const Color primary = Color(0xFFD4683A);       // Deep rust orange
+  static const Color secondary = Color(0xFF5C7A2E);     // Deep olive green
+  static const Color text = Color(0xFF333333);          // Dark gray
+  static const Color titleGreen = Color(0xFF4A6B24);    // Warm green for headline
+  static const Color card = Color(0xFFFFFBF5);          // Off-white
 
   static ThemeData build() {
     final base = ThemeData(
@@ -21,7 +22,7 @@ class AppTheme {
         headlineMedium: TextStyle(
           fontSize: 30,
           fontWeight: FontWeight.w700,
-          color: text,
+          color: titleGreen,
           height: 1.4,
         ),
         titleLarge: TextStyle(
@@ -58,7 +59,7 @@ class AppTheme {
           foregroundColor: Colors.white,
           minimumSize: const Size(double.infinity, 72),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(30),
           ),
           textStyle: const TextStyle(
             fontSize: 22,
