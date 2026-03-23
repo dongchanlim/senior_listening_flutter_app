@@ -5,7 +5,8 @@
       "mcp__ide__getDiagnostics",
       "Bash(cd \"C:\\\\Users\\\\dchan\\\\OneDrive\\\\문서\\\\GitHub\\\\senior_listening_flutter_app\\\\senior_listening_app\" && flutter --version 2>&1)",
       "Bash(find \"$\\(flutter sdk-path 2>/dev/null || echo 'C:/flutter'\\)/packages/flutter/lib\" -name \"widget_preview*\" 2>/dev/null; where flutter 2>/dev/null | head -1 | xargs -I{} dirname {} | xargs -I{} find {}/.. -name \"widget_preview*\" -maxdepth 8 2>/dev/null | head -10)",
-      "Bash(where flutter)"
+      "Bash(where flutter)",
+      "Bash(flutter analyze:*)"
     ]
   }
 }
